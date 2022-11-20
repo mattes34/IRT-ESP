@@ -1,3 +1,9 @@
+# Note to this Fork #
+
+I removed the PID control of the flow temperature to burner power calculation and always set the minimal burner power.
+The reason is that the minimal power is around 9.5kW (for all GB112 ?) and too much for my house.
+The second reason was that the PID control was always incrementing the power while the burner is in the burner lock time (10min ?). 
+
 # IRT-ESP
 IRT-ESP is a project to build an electronic controller circuit using an Espressif ESP8266 micro controller to communicate with iRT based Boilers from the Nefit Ecomline HR Classic range and compatibles such as Buderus.
 
