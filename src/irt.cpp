@@ -1195,7 +1195,8 @@ int16_t calculate_start_power(uint8_t req_water_temp, uint8_t cur_flowtemp)
 	// clip the max diff at 40
 	if (diff > 40) diff = 40;
 
-	return (IRT_MIN_USABLE_BURN_POWER + (diff << 2));
+	//return (IRT_MIN_USABLE_BURN_POWER + (diff << 2));
+	return IRT_MIN_USABLE_BURN_POWER;
 }
 
 /**
@@ -1249,7 +1250,8 @@ void irt_doFlowTempTicker()
 		new_power = calculate_start_power(IRT_Sys_Status.req_water_temp, IRT_Sys_Status.cur_flowtemp);
 		irt_setup_flowtemp_pid();
 	} else {
-		new_power = new_power + err;
+		//new_power = new_power + err;
+		new_power = IRT_MIN_USABLE_BURN_POWER;
 	}
 	// limit power to valid range
 	if (new_power < IRT_MIN_USABLE_BURN_POWER) new_power = IRT_MIN_USABLE_BURN_POWER; // any lower and the boiler stops running
